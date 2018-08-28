@@ -18,7 +18,7 @@ end
 
 
 function TestUI:Open()
-  print("打开了测试界面Open")
+  print("打开了测试界面Open1111111111111111111111")
 
 
 
