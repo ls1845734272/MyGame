@@ -1,2 +1,1 @@
-# 	MyGame
-just another repository
+# MyGame
