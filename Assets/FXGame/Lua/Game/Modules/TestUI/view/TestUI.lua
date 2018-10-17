@@ -21,8 +21,9 @@ function TestUI:Open()
     print("打开了测试界面Open1111111111111111111111")
     self:AddEvents()
     
-    self:SetShowText()
-    self:nextFrame()
+    print("测试新分支提交")
+    -- self:SetShowText()
+    -- self:nextFrame()
 end 
 
 function TestUI:SetShowText()
