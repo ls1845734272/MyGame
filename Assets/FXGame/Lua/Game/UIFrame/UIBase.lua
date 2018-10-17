@@ -10,6 +10,19 @@ function M:ctor(params)
 	self.isDestroy = false
 	self.destroyTime = 1000000
 	self.option = nil
+	self.queueList = {}
+	self.isPlayQueue = false
+end
+
+function M:Open()
+	self.isOpen = true
+	self.queueList = {}
+	self.isPlayQueue = false
+	self:dispatchEvent(EventType.WINDOW_OPEN)
+end
+
+function M:OpenAnim()
+	-- 重载
 end
 
 function M:isActive()
@@ -204,49 +217,80 @@ function M:PlayFadeOut(cbFunc,target,time,res)
 	end
 end
 
+--特效字
+function M:playBreathAni(go,toAlpha)
+	-- body
+	if(go == nil) then
+		return
+	end
+	
+	local text = go:GetComponent("Text")
+	if(text == nil) then
+		log("字体特效，该物体不是文字")
+	end
+	text.color = Color(text.color.r,text.color.g,text.color.b,1)
 
+	if  Util.GetCurPlatform() then
+		text:DOKill(false)
+		local tween = text:DOFade(toAlpha or 0.5,1)
+		if tween then
+			tween:SetLoops (-1, DG.Tweening.LoopType.Yoyo)
+		end
+	else
+		LeanTween.cancel(go.gameObject)
+		LeanTween.textAlpha(go:GetComponent("RectTransform"),toAlpha or 0.5,1):setLoopPingPong();
+	end
+end
 
+--处理ios的兼容问题
+function M:stopAni(go)
+	-- body
+	LeanTween.cancel(go)
+	go.transform:DOKill(false)
+end
 
-
-
-
---------------600--------------------
---设置小奖的默认位置
-function Maze:DefualtSmallReward(idx)
-    local commItem = self.samllItemList[idx].gameObject
-    if commitem == nil then return end 
-
-    local curpostion = Vector3(0,0,0)
-    if self.gridPositionList[idx] then 
-        curpostion = self.gridPositionList[idx]
-    else
-        curpostion = self:SetPosition(idx)
-    end 
-
-    commItem.transform.localScale = Vector3(0.6,0.6,0.6);
-    commItem.transform.localPosition = curpostion
-
-    commItem:SetActive(false)
-    if i <= self.info.num then
-        commItem:SetActive(true)
-    end 
+function M:ImageDoFill(img1,endValue1,callBack1) 
+	table.insert( self.queueList,{img = img1,endValue = endValue1,callBack = callBack1})
+	--if not self.isPlayQueue then 
+		self:PlayFill(img1,endValue1,callBack)
+	--end 
 end 
 
-function Maze:PlaySmallItemAnim(obj)
-    local group = self.inje_Image.gameObject:GetComponent(typeof(UnityEngine.CanvasGroup))
-    group.alpha = 1
-
-    LeanTween.cancel(self.inje_Image.gameObject)
-    LeanTween.moveLocalY(self.inje_Image.gameObject,100,10)  -- 位置
-    LeanTween.scale(self.inje_Image.gameObject, Vector3(2,2,2),4) -- 缩放
-    
-    LeanTween.value(self.inje_Image.gameObject,100,0,4)
-    :setEase(LeanTweenType.easeOutQuad)
-    :setOnUpdate(System.Action_float(function(value)
-        self.inje_Image.transform:GetComponent("RectTransform").sizeDelta = Vector2(value,value)
-    end))
-
-    LeanTween.alphaCanvas(group,0,5) -- 渐隐
+function M:PlayFill(img,endValue,callBack)
+	self.isPlayQueue = true
+	if callBack then
+		callBack()
+	end
+	if endValue > img.fillAmount then 
+		img:DOFillAmount(endValue,0.1):OnComplete(function()
+			table.remove( self.queueList,1)
+			if (#self.queueList > 0 ) then 
+				self:ImageDoFill(self.queueList[1].img,self.queueList[1].endValue)
+			else
+				self.isPlayQueue = false
+			end 
+		end)
+	else
+		img:DOFillAmount(1,0.05):OnComplete (function()
+			img.fillAmount = 0
+			img:DOFillAmount(endValue,0.05):OnComplete(function()
+				table.remove(self.queueList,1)
+				if(#self.queueList>0) then
+					self:PlayFill(self.queueList[1].img,self.queueList[1].endValue)
+				else
+					self.isPlayQueue = false
+				end
+			end)
+		end)
+	end 
 end 
 
+function M:Close()
+	self.isOpen = false
+	self:dispatchEvent(EventType.WINDOW_CLOSE) 
+end
 
+
+function M:ClearView()
+	
+end
