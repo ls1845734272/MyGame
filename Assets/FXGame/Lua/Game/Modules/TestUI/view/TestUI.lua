@@ -31,6 +31,7 @@ function TestUI:SetShowText()
     -- local str = HtmlTextUtil.addColor("helloworld",toColor("FFFFFF").hex)
     -- self.inje_Text.text = str
     self:playBreathAni(self.inje_Text.gameObject)
+    self:SetSlider()
 end 
 
 --添加事件 Button
@@ -68,12 +69,12 @@ end
 
 --处理延迟的方法
 function TestUI:nextFrame()
-    -- if self.timer then self.timer:Stop() self.timer = nil end 
-    -- self.timer = Timer.New(function() 
-    --     local str = "好孩子"
-    --     local itemColor = ColorType.getItemColor(4).hex  
-    --     UIManager.ShowAlert(string.format("我们都是%s",HtmlTextUtil.addColor(str,itemColor)),nil,nil,false)
-    -- end,3,-1):Start()
+    if self.timer then self.timer:Stop() self.timer = nil end 
+    self.timer = Timer.New(function() 
+        local str = "好孩子"
+        local itemColor = ColorType.getItemColor(4).hex  
+        UIManager.ShowAlert(string.format("我们都是%s",HtmlTextUtil.addColor(str,itemColor)),nil,nil,false)
+    end,3,-1):Start()
 
     -- --延迟0.6秒执行
     -- LeanTween.delayedCall(0.6,System.Action(function()   end))

@@ -339,28 +339,28 @@
  <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="CString">
- <HintPath>F:/UnityProject/server/MyGame/Assets/FXGame/Plugins/CString.dll</HintPath>
+ <HintPath>F:/MyGame/Assets/FXGame/Plugins/CString.dll</HintPath>
  </Reference>
  <Reference Include="Debugger">
- <HintPath>F:/UnityProject/server/MyGame/Assets/FXGame/Plugins/Debugger.dll</HintPath>
+ <HintPath>F:/MyGame/Assets/FXGame/Plugins/Debugger.dll</HintPath>
  </Reference>
  <Reference Include="DemiLib">
- <HintPath>F:/UnityProject/server/MyGame/Assets/FXGame/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
- <HintPath>F:/UnityProject/server/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+ <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
- <HintPath>F:/UnityProject/server/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+ <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
  </Reference>
  <Reference Include="DOTween46">
- <HintPath>F:/UnityProject/server/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+ <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
  <Reference Include="DOTween50">
- <HintPath>F:/UnityProject/server/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
+ <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
  <Reference Include="DOTweenPro">
- <HintPath>F:/UnityProject/server/MyGame/Assets/FXGame/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+ <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
