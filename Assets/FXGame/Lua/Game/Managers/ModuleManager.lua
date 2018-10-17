@@ -24,7 +24,7 @@ end
 function M:getModule(moduleType)
    local moduleView = GameModule[moduleType] 
    if not moduleView then
-      local cfg = ModuleConfig[moduleType]
+      local cfg = moduleConfig[moduleType]
       GameModule[moduleType] = require(cfg.module).New(cfg.module)
       moduleView = GameModule[moduleType]
    end 

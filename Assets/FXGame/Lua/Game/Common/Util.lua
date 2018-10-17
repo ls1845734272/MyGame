@@ -426,3 +426,34 @@ function Util.adpPanelUI(gameObject,isAdpIphoneX,isBaseBg)
 
 --     return isIpad
  end
+
+--判断当前的平台
+function Util.GetCurPlatform()
+    print(UnityEngine.Application.platform,"UnityEngine.Application.platform")
+    -- if UnityEngine.Application.platform == UnityEngine.RuntimePlatform.Android then 
+    --     return 1
+    -- elseif UnityEngine.Application.platform == UnityEngine.RuntimePlatform.IPhonePlayer then 
+    --     return 2
+    -- end
+    return false
+end 
+
+-- --ios系统不显示语音按钮
+-- function Util.IsIosPlatform()
+--     return UnityEngine.Application.platform == UnityEngine.RuntimePlatform.IPhonePlayer
+-- end
+
+function Util.CleanRef(target)
+    if target then
+        if type(target) == "table" then
+            for k,value in pairs(target) do
+                if type(value) ~= "function" and 
+                    k ~= "__eventMap__" and 
+                    k ~= "__callWithoutName__" and 
+                    k ~= "__className" then
+                    target[k] = nil
+                end
+            end
+        end
+    end
+end

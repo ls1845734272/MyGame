@@ -8,3 +8,12 @@ function GlobalUtil:getUID()
 	__id__ = __id__ + 1
 	return __id__
 end
+
+
+GlobalUtil.getResolution = function()
+	if GlobalUtil._resolution == nil then
+		GlobalUtil._resolution = Screen.height / 720
+		-- return Screen.height / 720
+	end
+	return GlobalUtil._resolution
+end

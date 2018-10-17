@@ -12,6 +12,7 @@ public class FXGame_LuaUtilWrap
 		L.RegFunction("Long", Long);
 		L.RegFunction("Random", Random);
 		L.RegFunction("LoadInstantiate", LoadInstantiate);
+		L.RegFunction("GetDifferFormDate", GetDifferFormDate);
 		L.RegFunction("New", _CreateFXGame_LuaUtil);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -119,6 +120,28 @@ public class FXGame_LuaUtilWrap
 			string arg0 = ToLua.CheckString(L, 1);
 			UnityEngine.Object o = FXGame.LuaUtil.LoadInstantiate(arg0);
 			ToLua.Push(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetDifferFormDate(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 6);
+			int arg0 = (int)LuaDLL.luaL_checknumber(L, 1);
+			int arg1 = (int)LuaDLL.luaL_checknumber(L, 2);
+			int arg2 = (int)LuaDLL.luaL_checknumber(L, 3);
+			int arg3 = (int)LuaDLL.luaL_checknumber(L, 4);
+			int arg4 = (int)LuaDLL.luaL_checknumber(L, 5);
+			int arg5 = (int)LuaDLL.luaL_checknumber(L, 6);
+			int o = FXGame.LuaUtil.GetDifferFormDate(arg0, arg1, arg2, arg3, arg4, arg5);
+			LuaDLL.lua_pushinteger(L, o);
 			return 1;
 		}
 		catch (Exception e)

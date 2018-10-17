@@ -11,15 +11,15 @@ end
 
 
 function M:Open()
+	print("是否执行了这里的逻辑open")
 	self:super("BaseModule","Open")
 	UIManager.GetInstance():ShowView("TestUI",{isDontDestroy = true},function(view)
 		 	self.testView = view
-		 	self.testView:setTestConfig({})
 	end)
 end
 
 function M:Close()
-	self:super("BaseModule","Close")
+	print("关闭了当前的测试界面")
 	UIManager:GetInstance():HideView("TestUI");
 end
 

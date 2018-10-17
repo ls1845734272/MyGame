@@ -1,11 +1,11 @@
 
 local GameObject = UnityEngine.GameObject;
 
---所有的模块导入
-local breakInfoFun = require("Game.LuaDebugjit")(ip and ip or "localhost",7003)
-    --添加断点监听函数
-local time = Timer.New(breakInfoFun,0.5,-1,1)
-time:Start()
+-- --所有的模块导入
+-- local breakInfoFun = require("Game.LuaDebugjit")(ip and ip or "localhost",7003)
+--     --添加断点监听函数
+-- local time = Timer.New(breakInfoFun,0.5,-1,1)
+-- time:Start()
 
 require("Game/Defines/define")
 

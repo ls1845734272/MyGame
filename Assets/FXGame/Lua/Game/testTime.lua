@@ -37,3 +37,11 @@
 -- print(curIsdst,"00000000000000000000000000000000000")
 -- local endTimestr = os.time({year = 2018,month = 7,day = 27,hour=23,min=59,sec=59,isdst = curIsdst})
 -- print(endTimestr,"111111111111111111111111111111111111111111111")
+
+
+
+local str = " 投资月卡每天可领取一次奖励，共计领取30次；"
+
+local firstValue = string.byte(str, 1)
+print(str,"strs")
+print(firstValue,"firstValues")

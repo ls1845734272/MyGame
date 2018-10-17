@@ -77,6 +77,12 @@ function M:ShowView(viewId,param,callBack,isPreload)
     viewConfig.delayProcess = viewConfig.delayProcess or 0  --菊花
     local recycleTime = viewConfig.recycleTime or 10   --默认10秒回收
 
+    -- 内存1g的手机
+    if FXGame.AppConst.forceLowQuality then
+        recycleTime = 2
+        isDontDestroy = false
+    end
+
     self.isPreShowing[viewId] = true
     self.asyncHideViews[viewId] = nil
 
@@ -105,6 +111,14 @@ function M:ShowView(viewId,param,callBack,isPreload)
 
         if not isPreload  then
             instance:OpenAnim()
+        end
+
+        -- 回收跟踪
+        if recycleTime > 0 then
+            if self.recycleTimerDic[viewId] and self.recycleTimerDic[viewId].running then
+                self.recycleTimerDic[viewId]:Stop()
+            end
+            self.recycleTimerDic[viewId] = Timer.New()
         end
 
         if callBack then
@@ -155,6 +169,14 @@ function M:ShowView(viewId,param,callBack,isPreload)
 
                     if not isPreload  then
                         instance:OpenAnim()
+                    end
+
+                    -- 回收跟踪
+                    if recycleTime > 0 then
+                        if self.recycleTimerDic[viewId] and self.recycleTimerDic[viewId].running then
+                            self.recycleTimerDic[viewId]:Stop()
+                        end
+                        self.recycleTimerDic[viewId] = Timer.New()
                     end
 
                     if callBack then
@@ -257,13 +279,50 @@ function M:HideView(viewId,isForceDestroy,isPreload)
 
     local layer = self.UIRoot:getLayer(struct.layer)
 
-    layer:removeChild(struct.obj,false,viewId,struct.layer,true)
+    print(isForceDestroy,"isForceDestroy")
+    
+    if isForceDestroy then
+        if self.recycleTimerDic[viewId] then
+            self.recycleTimerDic[viewId]:Stop()
+            self.recycleTimerDic[viewId] = nil
+        end
+        layer:removeChild(struct.obj,false,viewId,struct.layer,true)
+        self.allViews[viewId] = nil
+        --instance:Recycle()--uibase里面的方法，内存回收
+    else
+        print(struct.isDontDestroy,"struct.isDontDestroy")
+        if not struct.isDontDestroy then
+            print(struct.recycleTime,"struct.recycleTime")
+            if struct.recycleTime > 0 then
+                if self.recycleTimerDic[viewId] then
+                    if self.recycleTimerDic[viewId].running then
+                        self.recycleTimerDic[viewId]:Stop()
+                    end
+                    self.recycleTimerDic[viewId]:Reset(function()
+ 
+                     if not self:isShowing(viewId) then
+                         layer:removeChild(struct.obj,false,viewId,struct.layer,true)
+                         self.allViews[viewId] = nil
+                     end
+ 
+                     end,struct.recycleTime,1)
+                     self.recycleTimerDic[viewId]:Start()
+                 end
+                 layer:removeChild(struct.obj,true,viewId,struct.layer)
+            else
+                layer:removeChild(struct.obj,false,viewId,struct.layer,true)
+                self.allViews[viewId] = nil
+            end
+        else
+            layer:removeChild(struct.obj,true,viewId,struct.layer)
+        end
+    end 
+    --layer:removeChild(struct.obj,false,viewId,struct.layer,true)
 
     layer:updateAllSortingOrder()
 
-    self.allViews[viewId] = nil
-    UIUtils:setVisible(view,false)
-    --layer:updateAllSortingOrder() -- 排序
+    --self.allViews[viewId] = nil
+    --UIUtils:setVisible(view,false)
 end 
 
 
@@ -278,5 +337,10 @@ function M:isShowing(viewId)
     return false
 end
 
+--中间的飘字  itemBaseId 这是物品code；checkClick 这是是否需要cd
+function UIManager.ShowAlert(text,color,itemBaseId,checkClick)
+    color = color or ColorType.white.hex
+    UIManager.GetInstance():ShowView("CommonAlert",{viewData={content=text,color=color,baseId=itemBaseId,checkClick=checkClick}})
+end
 
 return UIManager

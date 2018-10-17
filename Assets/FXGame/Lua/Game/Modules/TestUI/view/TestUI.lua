@@ -2,11 +2,12 @@
 TestUI = class(UIBase,"TestUI")
 
 
-
 TestUI.inje_Image = 1 
 TestUI.inje_Button = 1 
 TestUI.inje_CloseBtn = 1
-
+TestUI.inje_Text = 1
+TestUI.inje_fill = 1
+TestUI.inje_sliderValue = 1
 
 function TestUI:Awake()
 
@@ -16,50 +17,84 @@ function TestUI:OpenAnim()
 	self:PlayAnimOpen()
 end
 
-
 function TestUI:Open()
-  print("打开了测试界面Open1111111111111111111111")
-
-
-
-  self.inje_CloseBtn.onClick:AddListener(function() 
-  	self:PlayAnimClose(function() 
-        print("关闭了界面")
-  		end)
-  end)
-
-
-  local btn = self.inje_Button.gameObject:GetComponent("Button")
-  btn.onClick:AddListener(function() 
-      Dispatcher.dispatchEvent(EventType.FIEST_EVENT)
-  end)
-  -- local instance = self.gameObject:GetComponent('LuaBehaviour')
-  -- instance:AddClick(self.inje_Button.gameObject,function()    
-  --    print("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
-  -- 	end)
+    print("打开了测试界面Open1111111111111111111111")
+    self:AddEvents()
+    
+    self:SetShowText()
+    self:nextFrame()
 end 
 
-function TestUI:setTestConfig( tab )
-  -- body
+function TestUI:SetShowText()
+    -- self.inje_Text.text = string.format( "<color=#7f7868>%s</color>","0000")--"123456789"
+    -- self.inje_Text.color = toColor("FFFFFF")
+    -- local str = HtmlTextUtil.addColor("helloworld",toColor("FFFFFF").hex)
+    -- self.inje_Text.text = str
+    self:playBreathAni(self.inje_Text.gameObject)
+end 
+
+--添加事件 Button
+function TestUI:AddEvents()
+    -- body
+    self.inje_CloseBtn.onClick:AddListener(function() 
+        self:PlayAnimClose(function() 
+            --ModuleManager:sendModule(ModuleType.TestUI)
+            UIManager.GetInstance():HideView("TestUI")
+        end)
+    end)
+    local btn = self.inje_Button.gameObject:GetComponent("Button")
+    btn.onClick:AddListener(function() 
+        Dispatcher.dispatchEvent(EventType.FIEST_EVENT)
+    end)
+    -- local instance = self.gameObject:GetComponent('LuaBehaviour')
+    -- instance:AddClick(self.inje_Button.gameObject,function()    
+    --    print("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+    -- 	end)
 end
 
-function TestUI:SetLeanTween(obj)
-  local pos1 = Vector3(0.7,0.7,1)
-  --延迟0.6秒执行
-  LeanTween.delayedCall(0.6,System.Action(function()   end))
+--设置slider
+function TestUI:SetSlider()
+    local curAmount = 10
+    local maxAmount = 15
+    if self.timer2 then self.timer2:Stop() self.timer2 = nil end 
+    self.timer2 = Timer.New(function() 
+        self.inje_sliderValue.text = string.format( "%s/%s",curAmount,maxAmount)
+        local per = curAmount/maxAmount
 
-  --下一帧执行
-  local function nextFrameProcess()
-   
-  end
-  CallDelay:nextCall(nextFrameProcess)
+        self:ImageDoFill(self.inje_fill,per)
+        curAmount = curAmount + 1
+    end,3,-1):Start()
+end 
 
-  -- StartCoroutine(function()
-  --     WaitForEndOfFrame()
-  --     Yield(0)
-  --     print("携程")
-  -- end)
+--处理延迟的方法
+function TestUI:nextFrame()
+    -- if self.timer then self.timer:Stop() self.timer = nil end 
+    -- self.timer = Timer.New(function() 
+    --     local str = "好孩子"
+    --     local itemColor = ColorType.getItemColor(4).hex  
+    --     UIManager.ShowAlert(string.format("我们都是%s",HtmlTextUtil.addColor(str,itemColor)),nil,nil,false)
+    -- end,3,-1):Start()
 
+    -- --延迟0.6秒执行
+    -- LeanTween.delayedCall(0.6,System.Action(function()   end))
+
+    --下一帧执行
+    -- local function nextFrameProcess()
+    --     print("00000000000000000")
+    -- end
+    -- CallDelay:nextCall(nextFrameProcess)
+
+    --协程
+    -- StartCoroutine(function()
+    --     -- WaitForEndOfFrame()
+    --     -- Yield(0)
+    --     print("000000000")
+    --     WaitForSeconds(1)
+    --     print("11111111")
+    --     WaitForSeconds(1)
+    --     print("22222222222")
+    --     -- print(i,"携程i")
+    -- end)
 end 
 
 

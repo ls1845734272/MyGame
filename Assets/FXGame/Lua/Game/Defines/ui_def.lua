@@ -72,6 +72,7 @@ UILayerInfos =
 UIViewID = 
 {
     TestUI = {path="Module/Test/TestUI",layer="ViewLayer"},
+    CommonAlert = { path="Common/CommonAlert",isDontDestroy=true,layer="TopAlertLayer" },
 }
 
 

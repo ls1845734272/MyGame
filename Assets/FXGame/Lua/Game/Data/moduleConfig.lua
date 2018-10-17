@@ -5,9 +5,9 @@ ModuleType =
 
 
 
-ModuleConfig = ｛
+moduleConfig = {
 
  TestUI = {name="TestUI",module="Game/Modules/TestUI/TestUIModule"},
 
-｝
+}
 

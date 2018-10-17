@@ -10,6 +10,8 @@ public class FXGame_AppConstWrap
 		L.RegFunction("New", _CreateFXGame_AppConst);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("DebugMode", get_DebugMode, set_DebugMode);
+		L.RegVar("VerifyApp", get_VerifyApp, set_VerifyApp);
+		L.RegVar("forceLowQuality", get_forceLowQuality, set_forceLowQuality);
 		L.RegVar("AppName", get_AppName, null);
 		L.EndClass();
 	}
@@ -53,6 +55,34 @@ public class FXGame_AppConstWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_VerifyApp(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, FXGame.AppConst.VerifyApp);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_forceLowQuality(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushboolean(L, FXGame.AppConst.forceLowQuality);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_AppName(IntPtr L)
 	{
 		try
@@ -73,6 +103,36 @@ public class FXGame_AppConstWrap
 		{
 			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
 			FXGame.AppConst.DebugMode = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_VerifyApp(IntPtr L)
+	{
+		try
+		{
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			FXGame.AppConst.VerifyApp = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_forceLowQuality(IntPtr L)
+	{
+		try
+		{
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			FXGame.AppConst.forceLowQuality = arg0;
 			return 0;
 		}
 		catch (Exception e)
