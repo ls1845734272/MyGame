@@ -111,6 +111,25 @@ namespace FXGame
             }
         }
 
+        //复制到剪切版
+        public static void CopyClipboard(string value)
+        {
+#if UNITY_EDITOR
+
+#elif UNITY_ANDROID
+            using (AndroidJavaObject currentActivity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity"))
+            {
+                string clipboard = new AndroidJavaClass("android.content.Context").GetStatic<string>("CLIPBOARD_SERVICE");
+                using (AndroidJavaObject clipboardManager = currentActivity.Call<AndroidJavaObject>("getSystemService", clipboard))
+                {
+                    clipboardManager.Call("setText", value);
+                }
+            }
+#elif UNITY_IOS
+
+#endif
+        }
+
 
 
     }

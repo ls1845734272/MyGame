@@ -76,7 +76,7 @@ public class BuildUtil {
             //{
             //gver.ServerVersion = new System.Version(objs[0].ToString());
             //}
-            gver.ServerVersion = new System.Version("0.0.0.1");
+            gver.ServerVersion = new System.Version("1.1.1.1");
         }
 
         string verContent = gver.GetVersionTxt();
@@ -230,17 +230,19 @@ public class BuildUtil {
     /// </summary>
     public static void Recursive(string path, List<string> files)
     {
-        string[] names = Directory.GetFiles(path);
-        string[] dirs = Directory.GetDirectories(path);
+
+        string[] names = Directory.GetFiles(path);//拿到该目录下所有文件（不查找子目录）
+        string[] dirs = Directory.GetDirectories(path);//拿到该目录下所有文件夹（不查找子目录）
+
+
         foreach (string filename in names)
         {
-            string ext = Path.GetExtension(filename);
+            string ext = Path.GetExtension(filename);//获取扩展名
             if (ext.Equals(".meta")) continue;
             files.Add(filename.Replace('\\', '/'));
         }
         foreach (string dir in dirs)
         {
-            //paths.Add(dir.Replace('\\', '/'));
             Recursive(dir, files);
         }
     }
@@ -269,6 +271,7 @@ public class BuildUtil {
         string dir = "";
         if (target == BuildTarget.StandaloneWindows)
         {
+            //    F:/ MyGame / Assets
             dir = Path.Combine(Application.dataPath, "../AssetBundles");
         }
         else if (target == BuildTarget.Android)

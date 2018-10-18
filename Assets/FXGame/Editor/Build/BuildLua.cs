@@ -15,17 +15,18 @@ public class BuildLua : ScriptableObject
     [MenuItem("FXGame/Build/Build Lua Windows",false,10003)]
     static void Build_Lua_Windows()
     {
-        //System.Diagnostics.Debugger.Log(1, "dd", "11111111111");
-        UnityEngine.Debug.Log("FXGame/Build/Build Lua Windows");
-        //target = BuildTarget.StandaloneWindows;
-        //BuildLuaScript();
+        //UnityEngine.Debug.Log("FXGame/Build/Build Lua Windows");
+        target = BuildTarget.StandaloneWindows;
+        BuildLuaScript();
     }
     public static void BuildLuaScript()
     {
+        
         //这是build资源的路径
         string buildPath = BuildUtil.GetBuildDir(target);
 
         string resPath = Path.Combine(buildPath, "lua");
+        //resPath = F:/ MyGame / Assets\../ AssetBundles\win\lua
 
         if (Directory.Exists(resPath))
         {
@@ -61,9 +62,10 @@ public class BuildLua : ScriptableObject
             Directory.CreateDirectory(respath);
         }
 
-
+        //项目里面 所有的lua脚本 的 原始目录
         string[] luaPaths = { AppConst.APPRoot + "/lua/",
                               AppConst.APPRoot + "/Tolua/Lua/" };
+
 
         for (int i = 0; i < luaPaths.Length; i++)
         {
@@ -75,7 +77,9 @@ public class BuildLua : ScriptableObject
             {
                 if (f.EndsWith(".meta")) continue;
                 string newfile = f.Replace(luaDataPath, "");
-                string newpath = Path.Combine(respath, newfile);
+                string newpath = Path.Combine(respath, newfile);//生成AssetBundle的lua的目录
+                //newfile = F:/ MyGame / Assets\../ AssetBundles\win\lua\Game / AchievementTips.lua
+                //newpath = F:/ MyGame / Assets\../ AssetBundles\win\lua\Game
                 string path = Path.GetDirectoryName(newpath);
                 if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
@@ -89,18 +93,18 @@ public class BuildLua : ScriptableObject
                 }
                 else
                 {
-                    File.Copy(f, newpath, true);
+                    File.Copy(f, newpath, true);//将我们项目的lua copy 到assetBundle目录下
                 }
                 UpdateProgress(n++, files.Count, newpath);
             }
         }
-        EditorUtility.ClearProgressBar();
+        EditorUtility.ClearProgressBar();// 清除进度条。
         AssetDatabase.Refresh();
     }
 
     static void ClearAllLuaFiles()
     {
-        string osName = BuildUtil.GetBuildOsDir(target);
+        string osName = BuildUtil.GetBuildOsDir(target);//win
 
         string osPath = Application.streamingAssetsPath + "/" + osName;
 
@@ -150,7 +154,7 @@ public class BuildLua : ScriptableObject
     {
         string title = "Processing...[" + progress + " - " + progressMax + "]";
         float value = (float)progress / (float)progressMax;
-        EditorUtility.DisplayProgressBar(title, desc, value);
+        EditorUtility.DisplayProgressBar(title, desc, value);//显示或更新进度条。
     }
 
 

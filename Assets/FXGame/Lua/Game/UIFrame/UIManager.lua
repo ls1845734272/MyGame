@@ -202,7 +202,7 @@ function M:_createView(viewId,loadInfo,onComplete)
     local viewData = loadInfo.viewData
     local syncLoad = loadInfo.syncLoad
 
-    local path = "FXGame/Prefabs/UI/"..cfg.path..".prefab"    
+    local path = "Prefabs/UI/"..cfg.path..".prefab"    
 
     if UIViewPath[viewId] then -- 加载lua文件
        require(UIViewPath[viewId])
