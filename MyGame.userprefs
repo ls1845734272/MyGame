@@ -1,8 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\MyProject16\Client\Projects\FXGame\Assets\FXGame\Scripts\Core\Utility\LuaUtil.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\FXGame\Scripts\Core\Utility\LuaUtil.cs">
     <Files>
-      <File FileName="..\..\..\MyProject16\Client\Projects\FXGame\Assets\FXGame\Scripts\Core\Utility\LuaUtil.cs" Line="10" Column="17" />
+      <File FileName="Assets\FXGame\Scripts\Core\ConstDefine\AppConst.cs" Line="6" Column="2" />
+      <File FileName="Assets\FXGame\Scripts\Core\Utility\LuaUtil.cs" Line="51" Column="75" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

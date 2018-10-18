@@ -17,6 +17,8 @@ require('Game/Util/CallDelay')
 require("Game/MVC/core/EventDispatcher")
 require("Game/MVC/core/Dispatcher")
 
+--游戏全局配置
+require( 'Game/Data/GameConfig' )
 --------------------------------------
 --颜色
 require( "Game/Defines/color_def" ) 

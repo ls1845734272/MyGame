@@ -14,6 +14,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
+    <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.5f1</UnityVersion>
@@ -50,61 +51,64 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
-      <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.VR">
-      <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+      <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
     </Reference>
     <Reference Include="CString">
-      <HintPath>Assets\FXGame\Plugins\CString.dll</HintPath>
+      <HintPath>Assets/FXGame/Plugins/CString.dll</HintPath>
     </Reference>
     <Reference Include="Debugger">
-      <HintPath>Assets\FXGame\Plugins\Debugger.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween46">
-      <HintPath>Assets\FXGame\Plugins\Demigiant\DOTween\DOTween46.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>Assets\FXGame\Plugins\Demigiant\DOTween\DOTween50.dll</HintPath>
+      <HintPath>Assets/FXGame/Plugins/Debugger.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>Assets\FXGame\Plugins\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>Assets\FXGame\Plugins\Demigiant\DOTween\DOTween43.dll</HintPath>
+      <HintPath>Assets/FXGame/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>Assets\FXGame\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+      <HintPath>Assets/FXGame/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets/FXGame/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets/FXGame/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets/FXGame/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>Assets\FXGame\Plugins\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
+      <HintPath>Assets/FXGame/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>E:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ExampleClass.cs" />
     <Compile Include="Assets\FXGame\Plugins\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
     <Compile Include="Assets\FXGame\Plugins\SetProperty\SetPropertyAttribute.cs" />
     <Compile Include="Assets\FXGame\Scripts\Core\Common\FXBehaviour.cs" />
+    <Compile Include="Assets\FXGame\Scripts\Core\Common\GameAssetsManifest.cs" />
+    <Compile Include="Assets\FXGame\Scripts\Core\Common\GameVersion.cs" />
     <Compile Include="Assets\FXGame\Scripts\Core\Common\LLuaBehaviourInterface.cs" />
     <Compile Include="Assets\FXGame\Scripts\Core\Common\LLuaTable.cs" />
     <Compile Include="Assets\FXGame\Scripts\Core\Common\LuaBehaviour.cs" />
@@ -354,6 +358,15 @@
     <Compile Include="Assets\FXGame\ToLua\Reflection\LuaMethod.cs" />
     <Compile Include="Assets\FXGame\ToLua\Reflection\LuaProperty.cs" />
     <Compile Include="Assets\FXGame\ToLua\Reflection\LuaReflection.cs" />
+    <Compile Include="Assets\TestCS\NewScrollView.cs" />
+    <Compile Include="Assets\TestCS\ScrollRectTest.cs" />
+    <Compile Include="Assets\TestCS\ScrollTest.cs" />
+    <Compile Include="Assets\TestCS\TestDoTween.cs" />
+    <Compile Include="Assets\TestCS\TestDrag.cs" />
+    <Compile Include="Assets\TestCS\TestRectPostion.cs" />
+    <Compile Include="Assets\TestCS\TestRotation.cs" />
+    <Compile Include="Assets\TestCS\TestScrollView.cs" />
+    <Compile Include="Assets\TestCS\scrollGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FXGame\Plugins\Demigiant\DOTween\DOTween.XML" />

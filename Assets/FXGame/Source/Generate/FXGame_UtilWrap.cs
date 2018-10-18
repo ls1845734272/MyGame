@@ -8,8 +8,12 @@ public class FXGame_UtilWrap
 	{
 		L.BeginClass(typeof(FXGame.Util), typeof(System.Object));
 		L.RegFunction("FormatException", FormatException);
+		L.RegFunction("md5file", md5file);
 		L.RegFunction("New", _CreateFXGame_Util);
 		L.RegFunction("__tostring", ToLua.op_ToString);
+		L.RegVar("DataPath2", get_DataPath2, null);
+		L.RegVar("AppUpdateFile", get_AppUpdateFile, null);
+		L.RegVar("AppDllFile", get_AppDllFile, null);
 		L.EndClass();
 	}
 
@@ -46,6 +50,80 @@ public class FXGame_UtilWrap
 			System.Exception arg0 = (System.Exception)ToLua.CheckObject<System.Exception>(L, 1);
 			string o = FXGame.Util.FormatException(arg0);
 			LuaDLL.lua_pushstring(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int md5file(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1 && TypeChecker.CheckTypes<string>(L, 1))
+			{
+				string arg0 = ToLua.ToString(L, 1);
+				string o = FXGame.Util.md5file(arg0);
+				LuaDLL.lua_pushstring(L, o);
+				return 1;
+			}
+			else if (count == 1 && TypeChecker.CheckTypes<byte[]>(L, 1))
+			{
+				byte[] arg0 = ToLua.CheckByteBuffer(L, 1);
+				string o = FXGame.Util.md5file(arg0);
+				LuaDLL.lua_pushstring(L, o);
+				return 1;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: FXGame.Util.md5file");
+			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_DataPath2(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, FXGame.Util.DataPath2);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_AppUpdateFile(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, FXGame.Util.AppUpdateFile);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_AppDllFile(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, FXGame.Util.AppDllFile);
 			return 1;
 		}
 		catch (Exception e)

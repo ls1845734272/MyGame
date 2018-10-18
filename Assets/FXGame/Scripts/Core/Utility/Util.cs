@@ -23,5 +23,95 @@ namespace FXGame
             string strSource = string.IsNullOrEmpty(e.Source) ? "<no source>" : e.Source.Substring(0, e.Source.Length - 2);
             return string.Format("{0}\nLua (at {2})", e.Message, string.Empty, strSource);
         }
+
+        /// <summary>
+        /// 获得打包的文件夹
+        /// </summary>
+        public static string DataPath2
+        {
+
+            get
+            {
+                if (Application.platform == RuntimePlatform.OSXEditor)
+                {
+                    // int i = Application.dataPath.LastIndexOf('/');
+                    // return Application.dataPath.Substring(0, i + 1) + game + "/";
+                    return "myfxgame_xl/";
+                }
+                if (Application.platform == RuntimePlatform.WindowsEditor)
+                {
+                    return "D:/myfxgame_xl/";
+                }
+
+                return "myfxgame_xl";
+
+            }
+        }
+
+        /// <summary>
+        /// 程序清单文件
+        /// </summary>
+        /// <returns></returns>
+        public static string AppUpdateFile
+        {
+            get { return "update" + AppConst.ExtName; }
+        }
+
+        public static string AppDllFile
+        {
+            get { return "Assembly-CSharp.dll"; }
+        }
+
+        public static string md5file(byte[] bt)
+        {
+            try
+            {
+                System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                byte[] retVal = md5.ComputeHash(bt);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < retVal.Length; i++)
+                {
+                    sb.Append(retVal[i].ToString("x2"));
+                }
+
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("md5file() fail, error:" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 计算文件的MD5值
+        /// </summary>
+        public static string md5file(string file)
+        {
+            try
+            {
+                FileStream fs = new FileStream(file, FileMode.Open);
+                System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                byte[] retVal = md5.ComputeHash(fs);
+                fs.Close();
+
+
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < retVal.Length; i++)
+                {
+                    sb.Append(retVal[i].ToString("x2"));
+                }
+
+                return sb.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("md5file() fail, error:" + ex.Message);
+            }
+        }
+
+
+
     }
 }
