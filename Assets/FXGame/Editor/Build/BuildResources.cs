@@ -57,8 +57,8 @@ public class BuildResources : ScriptableObject
 
         ResourcesHandle(resPath);
 
-        //BuildUtil.GenVersionFile(buildPath, BuildUtil.VersionEnum.RES);
-        //BuildUtil.BuildFileIndex(buildPath);
+        BuildUtil.GenVersionFile(buildPath, BuildUtil.VersionEnum.RES);
+        BuildUtil.BuildFileIndex(buildPath);
     }
 
     static void ResourcesHandle(string resPath)
@@ -97,6 +97,9 @@ public class BuildResources : ScriptableObject
         AssetBundleManifest info = BuildPipeline.BuildAssetBundles(resPath, abbList.ToArray(), options, target);
         Debug.Log(info);
 
+        //因为AssetBundleManifest只是一个信息列表，不能通过path找到包，不能查找关联包
+        //要建立一个管理器，来处理需求
+        //这里面有key，关联ab包， 让我们可以通过路径，查找到所在ab包
         string[] abs = info.GetAllAssetBundles();
         GameAssetsManifest gameAssetsManifest = ScriptableObject.CreateInstance<GameAssetsManifest>();
         gameAssetsManifest.buildPath = resPath;
@@ -112,11 +115,12 @@ public class BuildResources : ScriptableObject
         gameAssetsManifest.AddAssetBundleManifest(info);
         gameAssetsManifest.AddAssetIdxMap(BuildManager.idxMap);
 
-
+        //这里的目的是将  GameAssetsManifest 虚拟的管理器，转换成可以在unity显示的二进制文件
         string manifestPath = "Assets/GameAssetsManifest.asset";
         AssetDatabase.CreateAsset(gameAssetsManifest, manifestPath);
         AssetDatabase.Refresh();
 
+        //能打ab包的必须是资源，将转换为二进制文件的GameAssetsManifest，打成ab包
         AssetBundleBuild ab = new AssetBundleBuild();
         ab.assetBundleName = "manifest" + FXGame.AppConst.ExtName;
         ab.assetNames = new string[] { manifestPath };

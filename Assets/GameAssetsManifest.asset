@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f33522592ff6454fa44a82b045bd3f7, type: 3}
+  m_Name: GameAssetsManifest
+  m_EditorClassIdentifier: 
+  m_Keys:
+  - assets/prefabs/ui/common/alertitem.prefab
+  - assets/prefabs/ui/common/commonalert.prefab
+  - assets/prefabs/ui/module/test/testui.prefab
+  - assets/artassets/ui/firstcharge.prefab
+  - assets/artassets/ui/materials/ui_defaultgray.mat
+  - assets/artassets/uiimage/common1/zd_18.png
+  - assets/artassets/uiimage/common1/zd_19.png
+  - assets/artassets/uiimage/common1/zjm_07_03.png
+  - assets/scenes/gamescenes/scene1.unity
+  m_Values: 020000000200000003000000000000000000000001000000010000000100000004000000
+  m_AssetBundleNames:
+  - artassets/ui.png
+  - artassets/uiimage/common1.png
+  - prefabs/ui/common.png
+  - prefabs/ui/module/test.png
+  - scenes/gamescenes/scene1.png
+  m_AssetBundleInfos:
+  - m_Crc: 113691584
+    m_AssetBundleHash: 14224819ec844dbc9490b106d067a6fe
+    m_AssetBundleDependencies: 
+  - m_Crc: 1783077757
+    m_AssetBundleHash: 50f9536866dacaf4f7446d4e7364a087
+    m_AssetBundleDependencies: 
+  - m_Crc: 2182116490
+    m_AssetBundleHash: af719d2a9456e30dbd6d61a7f188b9ed
+    m_AssetBundleDependencies: 01000000
+  - m_Crc: 2918767884
+    m_AssetBundleHash: e126bd4788f16d5f44fedc8b07e3548e
+    m_AssetBundleDependencies: 01000000
+  - m_Crc: 1487556023
+    m_AssetBundleHash: 3399d3a75d4c6176a3d59289729e75de
+    m_AssetBundleDependencies: 
+  m_Compression: 1
+  buildPath: F:/MyGame/Assets\../AssetBundles\win\res

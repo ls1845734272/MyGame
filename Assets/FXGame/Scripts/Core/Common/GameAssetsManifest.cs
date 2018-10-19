@@ -20,11 +20,11 @@ public class GameAssetsManifest : ScriptableObject, ISerializationCallbackReceiv
     [SerializeField]
     private List<int> m_Values = new List<int>();
     [SerializeField]
-    private List<string> m_AssetBundleNames = new List<string>();
+    private List<string> m_AssetBundleNames = new List<string>();//包名字
     private Dictionary<string, int> m_AssetNamesIdxMap = new Dictionary<string, int>();
     [SerializeField]
     private List<AssetBundleInfo> m_AssetBundleInfos = new List<AssetBundleInfo>();
-    private Dictionary<string, int> m_AssetIdxMap = new Dictionary<string, int>();
+    private Dictionary<string, int> m_AssetIdxMap = new Dictionary<string, int>();//根据路径，获得ab包的索引；； 在m_AssetBundleNames里面，通过索引获得ab包名字 
     public AssetBundleCompression m_Compression = AssetBundleCompression.None;
     //#if UNITY_EDITOR
     //[System.NonSerialized]
@@ -158,7 +158,7 @@ public class GameAssetsManifest : ScriptableObject, ISerializationCallbackReceiv
             }
         }
     }
-
+    //通过路径来查到ab索引
     public string GetAssetBundleNameAtPath(string assetPath)
     {
         assetPath = "assets/" + assetPath.ToLower().Replace("\\", "/");
