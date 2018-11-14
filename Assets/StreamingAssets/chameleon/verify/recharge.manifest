@@ -1,0 +1,53 @@
+ManifestFileVersion: 0
+CRC: 2860294959
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 93871a6e6de8a528e7ba772142579080
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 36c33a819640bead83b84b1645a12e6d
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/duokemeng_5/Vcz_26.png
+- Assets/duokemeng_5/Vcz_21.png
+- Assets/duokemeng_5/Vcz_02.png
+- Assets/duokemeng_5/Vcz_04.png
+- Assets/duokemeng_5/VIPsz_08.png
+- Assets/duokemeng_5/Vcz_17.png
+- Assets/duokemeng_5/Vcz_16.png
+- Assets/duokemeng_5/VIPsz_04.png
+- Assets/duokemeng_5/Vcz_03_05.png
+- Assets/duokemeng_5/VIPsz_00.png
+- Assets/duokemeng_5/VIPsz_05.png
+- Assets/duokemeng_5/Vcz_03_06.png
+- Assets/duokemeng_5/VIPsz_07.png
+- Assets/duokemeng_5/Vcz_09.png
+- Assets/duokemeng_5/Vcz_18.png
+- Assets/duokemeng_5/Vcz_25.png
+- Assets/duokemeng_5/VIPsz_10.png
+- Assets/duokemeng_5/Vcz_20.png
+- Assets/duokemeng_5/Vcz_24.png
+- Assets/duokemeng_5/VIPsz_01.png
+- Assets/duokemeng_5/czvip_00.png
+- Assets/duokemeng_5/VIPsz_09.png
+- Assets/duokemeng_5/Vcz_14.png
+- Assets/duokemeng_5/Vcz_15.png
+- Assets/duokemeng_5/Vcz_03_08.png
+- Assets/duokemeng_5/Vcz_03_07.png
+- Assets/duokemeng_5/Vcz_01.png
+- Assets/duokemeng_5/Vcz_22.png
+- Assets/duokemeng_5/Vcz_19.png
+- Assets/duokemeng_5/Vcz_08.png
+- Assets/duokemeng_5/VIPsz_06.png
+- Assets/duokemeng_5/VIPsz_02.png
+- Assets/duokemeng_5/Vcz_23.png
+- Assets/duokemeng_5/czvip_00_01.png
+- Assets/duokemeng_5/VIPsz_03.png
+- Assets/duokemeng_5/Vcz_03_04.png
+Dependencies: []

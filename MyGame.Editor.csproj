@@ -199,6 +199,7 @@
     <None Include="Assets\FXGame\Plugins\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\FXGame\ToLua\readme.txt" />
     <None Include="Assets\FXGame\link.xml" />
+    <None Include="Assets\StreamingAssets\game_config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

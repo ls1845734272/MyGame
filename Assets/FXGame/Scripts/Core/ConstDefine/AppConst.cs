@@ -14,6 +14,8 @@ namespace FXGame
 
 		public static bool forceLowQuality = false;    //强制最低画质，不可切换高画质 低配手机
 
+        public const int GameFrameRate = 30;                       //游戏帧频
+
         public const string AppName = "FXGame";                     //应用程序名称
         public const string ExtName = ".png";                     //资源扩展名
 

@@ -125,7 +125,12 @@
     <Compile Include="Assets\FXGame\Scripts\Core\Widget\LeanTween\LeanAudio.cs" />
     <Compile Include="Assets\FXGame\Scripts\Core\Widget\LeanTween\LeanTween.cs" />
     <Compile Include="Assets\FXGame\Scripts\Initialize\GameInitialize.cs" />
+    <Compile Include="Assets\FXGame\Scripts\MonoXML\MiniParser.cs" />
+    <Compile Include="Assets\FXGame\Scripts\MonoXML\SecurityParser.cs" />
+    <Compile Include="Assets\FXGame\Scripts\MonoXML\SmallXmlParser.cs" />
     <Compile Include="Assets\FXGame\Scripts\Tools\GradientEffect.cs" />
+    <Compile Include="Assets\FXGame\Scripts\Update\UpdateController.cs" />
+    <Compile Include="Assets\FXGame\Scripts\Update\UpdateInternalController.cs" />
     <Compile Include="Assets\FXGame\Source\Generate\DG_Tweening_Core_ABSAnimationComponentWrap.cs" />
     <Compile Include="Assets\FXGame\Source\Generate\DG_Tweening_DOTweenAnimationWrap.cs" />
     <Compile Include="Assets\FXGame\Source\Generate\DG_Tweening_DOTweenWrap.cs" />
@@ -383,6 +388,7 @@
     <None Include="Assets\FXGame\Plugins\Demigiant\readme_DOTweenPro.txt" />
     <None Include="Assets\FXGame\ToLua\readme.txt" />
     <None Include="Assets\FXGame\link.xml" />
+    <None Include="Assets\StreamingAssets\game_config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
