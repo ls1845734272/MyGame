@@ -9,6 +9,7 @@ public class FXGame_UtilWrap
 		L.BeginClass(typeof(FXGame.Util), typeof(System.Object));
 		L.RegFunction("FormatException", FormatException);
 		L.RegFunction("md5file", md5file);
+		L.RegFunction("CopyClipboard", CopyClipboard);
 		L.RegFunction("New", _CreateFXGame_Util);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("DataPath2", get_DataPath2, null);
@@ -83,6 +84,22 @@ public class FXGame_UtilWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to method: FXGame.Util.md5file");
 			}
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int CopyClipboard(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			string arg0 = ToLua.CheckString(L, 1);
+			FXGame.Util.CopyClipboard(arg0);
+			return 0;
 		}
 		catch (Exception e)
 		{

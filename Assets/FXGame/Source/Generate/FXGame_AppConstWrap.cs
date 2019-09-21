@@ -15,6 +15,7 @@ public class FXGame_AppConstWrap
 		L.RegVar("LuaBundleMode", get_LuaBundleMode, set_LuaBundleMode);
 		L.RegVar("VerifyApp", get_VerifyApp, set_VerifyApp);
 		L.RegVar("forceLowQuality", get_forceLowQuality, set_forceLowQuality);
+		L.RegConstant("GameFrameRate", 30);
 		L.RegVar("AppName", get_AppName, null);
 		L.RegVar("ExtName", get_ExtName, null);
 		L.RegVar("APPRoot", get_APPRoot, null);

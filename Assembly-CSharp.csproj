@@ -39,16 +39,19 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>E:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>E:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ExampleClass.cs" />
      <Compile Include="Assets\FXGame\Plugins\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
      <Compile Include="Assets\FXGame\Plugins\SetProperty\SetPropertyAttribute.cs" />
      <Compile Include="Assets\FXGame\Scripts\Core\Common\FXBehaviour.cs" />
+     <Compile Include="Assets\FXGame\Scripts\Core\Common\GameAssetsManifest.cs" />
+     <Compile Include="Assets\FXGame\Scripts\Core\Common\GameVersion.cs" />
      <Compile Include="Assets\FXGame\Scripts\Core\Common\LLuaBehaviourInterface.cs" />
      <Compile Include="Assets\FXGame\Scripts\Core\Common\LLuaTable.cs" />
      <Compile Include="Assets\FXGame\Scripts\Core\Common\LuaBehaviour.cs" />
@@ -65,7 +68,12 @@
      <Compile Include="Assets\FXGame\Scripts\Core\Widget\LeanTween\LeanAudio.cs" />
      <Compile Include="Assets\FXGame\Scripts\Core\Widget\LeanTween\LeanTween.cs" />
      <Compile Include="Assets\FXGame\Scripts\Initialize\GameInitialize.cs" />
+     <Compile Include="Assets\FXGame\Scripts\MonoXML\MiniParser.cs" />
+     <Compile Include="Assets\FXGame\Scripts\MonoXML\SecurityParser.cs" />
+     <Compile Include="Assets\FXGame\Scripts\MonoXML\SmallXmlParser.cs" />
      <Compile Include="Assets\FXGame\Scripts\Tools\GradientEffect.cs" />
+     <Compile Include="Assets\FXGame\Scripts\Update\UpdateController.cs" />
+     <Compile Include="Assets\FXGame\Scripts\Update\UpdateInternalController.cs" />
      <Compile Include="Assets\FXGame\Source\Generate\DG_Tweening_Core_ABSAnimationComponentWrap.cs" />
      <Compile Include="Assets\FXGame\Source\Generate\DG_Tweening_DOTweenAnimationWrap.cs" />
      <Compile Include="Assets\FXGame\Source\Generate\DG_Tweening_DOTweenWrap.cs" />
@@ -317,50 +325,51 @@
      <None Include="Assets\FXGame\ToLua\readme.txt" />
      <None Include="Assets\FXGame\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
      <None Include="Assets\FXGame\Plugins\Demigiant\readme_DOTweenPro.txt" />
+     <None Include="Assets\StreamingAssets\game_config.xml" />
  <Reference Include="UnityEngine.UI">
- <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.TestRunner">
- <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
- <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
- <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
- <HintPath>E:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ <HintPath>D:/unity5.6.5f1/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
  </Reference>
  <Reference Include="CString">
- <HintPath>F:/MyGame/Assets/FXGame/Plugins/CString.dll</HintPath>
+ <HintPath>E:/MyGame/Assets/FXGame/Plugins/CString.dll</HintPath>
  </Reference>
  <Reference Include="Debugger">
- <HintPath>F:/MyGame/Assets/FXGame/Plugins/Debugger.dll</HintPath>
+ <HintPath>E:/MyGame/Assets/FXGame/Plugins/Debugger.dll</HintPath>
  </Reference>
  <Reference Include="DemiLib">
- <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+ <HintPath>E:/MyGame/Assets/FXGame/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
- <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+ <HintPath>E:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
- <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+ <HintPath>E:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
  </Reference>
  <Reference Include="DOTween46">
- <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+ <HintPath>E:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
  <Reference Include="DOTween50">
- <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
+ <HintPath>E:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
  <Reference Include="DOTweenPro">
- <HintPath>F:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+ <HintPath>E:/MyGame/Assets/FXGame/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
